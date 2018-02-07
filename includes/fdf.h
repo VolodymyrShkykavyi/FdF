@@ -15,8 +15,13 @@
 
 # include <mlx.h>
 # include <math.h>
+# include "ft_mlx_image.h"
+
 # define ABS(x) ((x > 0) ? (x) : (-x))
 
+/*
+** 0xAARRGGBB - AA(alpha channel), RR(red), GG(green), BB(blue)
+*/
 typedef struct	s_point
 {
 	int			x;
@@ -25,6 +30,8 @@ typedef struct	s_point
 }				t_point;
 
 
-void 	draw_straight_line(t_point p1, t_point p2, void *mlx_ptr,
-						   void *win_ptr);
+void			draw_straight_line(t_mlx *mlx, t_point p1, t_point p2,
+								   int color);
+void			draw_wu_line(t_mlx *mlx, t_point p1, t_point p2, int color);
+
 #endif

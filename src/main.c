@@ -49,11 +49,36 @@ int 	main(void)
 
 	int		i;
 	t_mlx	*mlx_info;
+	t_point	p1;
+	t_point	p2;
 
 	i = 0;
 	mlx_info = init_mlx_and_img(500, 300, "my title");
-	while (++i < 100)
-		put_pixel_to_img(&(mlx_info->img), i, 30, 0xFF00FF);
+	while (++i < 300)
+		put_pixel_to_img(&(mlx_info->img), i, 70, 0xFF00FF);
+
+	p1.x = 50;
+	p1.y = 150;
+	p2.x = 50;
+	p2.y = 50;
+	i = 0;
+	while (++i < 30)
+	{
+		p1.x++;
+		p2.x++;
+		draw_straight_line(mlx_info, p1, p2, 0x52FFAAFF);
+	}
+
+	p1.x = 100;
+	p1.y = 50;
+	p2.x = 100;
+	i = 0;
+	while (++i < 30)
+	{
+		p1.x++;
+		p2.x++;
+		draw_straight_line(mlx_info, p1, p2, 0x10FFAAFF);
+	}
 	mlx_mouse_hook(mlx_info->win_ptr, &mouse_click, NULL);
 	mlx_key_hook(mlx_info->win_ptr, &pressed_key, NULL);
 

@@ -3,7 +3,7 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 O_FILES = $(addprefix $(OBJ_DIR)/, $(C_FILES:src/%.c=%.o))
 C_FILES = $(addprefix $(SRC_DIR)/, main.c init_img_struct.c init_mlx_and_img.c \
-			put_pixel_to_img.c)
+			put_pixel_to_img.c draw_line.c)
 OBJ_DIR = objects
 SRC_DIR = src
 INCLUDES = -lmlx -lm -framework OpenGL -framework AppKit -I includes/
