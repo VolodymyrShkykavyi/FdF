@@ -26,12 +26,17 @@ typedef struct	s_point
 {
 	int			x;
 	int			y;
+	int			z;
 	int			color;
 }				t_point;
 
 
 void			draw_straight_line(t_mlx *mlx, t_point p1, t_point p2,
 								   int color);
-void			draw_wu_line(t_mlx *mlx, t_point p1, t_point p2, int color);
+void			draw_wu_line(t_mlx *mlx, t_point p1, t_point p2);
+void			swap_points(t_point *p1, t_point *p2);
+int				fdf_change_alpha_in_argb(int color, int alpha);
+int				fdf_get_argb(int a, int r, int g, int b);
+float			get_fraction(float num);
 
 #endif
