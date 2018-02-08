@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: vshkykav <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2017/10/25 18:00:21 by vshkykav          #+#    #+#             */
+/*   Updated: 2017/10/28 15:08:32 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include <string.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	unsigned long	*start;
+
+	start = dst;
+	while (n-- > 0)
+		*(unsigned char *)(dst++) = *(unsigned char *)(src++);
+	return (start);
 }

@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: vshkykav <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2017/10/27 14:06:38 by vshkykav          #+#    #+#             */
+/*   Updated: 2017/10/30 18:47:42 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include <string.h>
+
+size_t	ft_strlen(const char *s)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	size_t len;
+
+	len = 0;
+	if (!s)
+		return (0);
+	while (s[len])
+		len++;
+	return (len);
 }

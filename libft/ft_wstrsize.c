@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_wstrsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2018/01/12 12:57:00 by vshkykav          #+#    #+#             */
+/*   Updated: 2018/01/12 12:57:00 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include "libft.h"
+
+size_t	ft_wstrsize(wchar_t *str)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	size_t	size;
+
+	size = 0;
+	while (*str)
+		size += ft_utf8_bytelen(*str++);
+	return (size);
 }

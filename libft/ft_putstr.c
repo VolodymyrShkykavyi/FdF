@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: vshkykav <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2017/10/31 14:25:57 by vshkykav          #+#    #+#             */
+/*   Updated: 2017/11/02 13:28:13 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include <unistd.h>
+#include <string.h>
+
+void	ft_putstr(char const *s)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	if (s == NULL)
+		return ;
+	while (*s)
+		write(1, s++, 1);
 }

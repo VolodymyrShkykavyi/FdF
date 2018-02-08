@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: vshkykav <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2017/10/25 13:47:02 by vshkykav          #+#    #+#             */
+/*   Updated: 2017/10/30 13:50:11 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include <string.h>
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	void	*start;
+
+	start = b;
+	while (len-- > 0)
+		*(unsigned char*)(b++) = (unsigned char)c;
+	return (start);
 }

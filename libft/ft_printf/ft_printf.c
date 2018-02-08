@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2018/01/12 13:30:00 by vshkykav          #+#    #+#             */
+/*   Updated: 2018/01/12 13:30:00 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include "ft_printf.h"
+
+int		ft_printf(const char *format, ...)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	va_list		args;
+	int			len;
+	char		*str;
+
+	va_start(args, format);
+	len = 0;
+	str = (char *)format;
+	while (*str)
+	{
+		while (*str == '%')
+			specificator_manager(&str, &len, &args);
+		if (!(*str))
+			break ;
+		if (*str == '{')
+			ft_printf_getcolor(&str, &len);
+		len++;
+		write(1, str, 1);
+		str++;
+	}
+	return (len);
 }

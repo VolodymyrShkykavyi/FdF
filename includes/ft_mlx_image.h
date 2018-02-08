@@ -27,14 +27,14 @@
 **    				or big endian ( endian == 1). Set in mlx_get_data_addr
 */
 
-typedef struct	s_img
+typedef struct		s_img
 {
-	void		*img_ptr;
-	int			*img_data;
-	int			size_line;
-	int			bpp;
-	int			endian;
-}				t_img;
+	void			*img_ptr;
+	unsigned int	*img_data;
+	int				size_line;
+	int				bpp;
+	int				endian;
+}					t_img;
 
 /*
 ** mlx_ptr -	return value of mlx_init()

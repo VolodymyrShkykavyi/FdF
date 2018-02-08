@@ -12,5 +12,5 @@
 
 int		fdf_get_argb(int a, int r, int g, int b)
 {
-	return (a * 0x01000000 + b * 0x010000 + g * 0x0100 + b);
+	return (a * 0x01000000 + r * 0x010000 + g * 0x0100 + b);
 }

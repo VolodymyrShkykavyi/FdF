@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   ft_specinfo_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2018/01/12 13:59:00 by vshkykav          #+#    #+#             */
+/*   Updated: 2018/01/12 13:59:00 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+#include "ft_printf.h"
+
+void	ft_specinfo_init(t_specinfo *info)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	info->format = 0;
+	info->zero_minus = 0;
+	info->plus_space = 0;
+	info->sharp = 0;
+	info->width = -1;
+	info->precision = -1;
+	info->mod_h = 0;
+	info->mod_j = 0;
+	info->mod_l = 0;
+	info->mod_z = 0;
+	info->mod_l_up = 0;
 }

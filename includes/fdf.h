@@ -16,12 +16,9 @@
 # include <mlx.h>
 # include <math.h>
 # include "ft_mlx_image.h"
+# include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
 
-# define ABS(x) ((x > 0) ? (x) : (-x))
-
-/*
-** 0xAARRGGBB - AA(alpha channel), RR(red), GG(green), BB(blue)
-*/
 typedef struct	s_point
 {
 	int			x;
@@ -33,10 +30,11 @@ typedef struct	s_point
 
 void			draw_straight_line(t_mlx *mlx, t_point p1, t_point p2,
 								   int color);
-void			draw_wu_line(t_mlx *mlx, t_point p1, t_point p2);
+void			draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2);
 void			swap_points(t_point *p1, t_point *p2);
 int				fdf_change_alpha_in_argb(int color, int alpha);
 int				fdf_get_argb(int a, int r, int g, int b);
 float			get_fraction(float num);
+void			fdf_run_hooks(void *win_ptr);
 
 #endif
