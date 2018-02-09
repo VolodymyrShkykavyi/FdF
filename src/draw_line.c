@@ -17,52 +17,42 @@
 
 void 	draw_straight_line(t_mlx *mlx, t_point p1, t_point p2, int color)
 {
-	int		dirx;
-	int 	diry;
+	t_line	line;
 
-	dirx = (p1.x < p2.x) ? 1 : -1;
-	dirx = (p1.x == p2.x) ? 0 : dirx;
-	diry = (p1.y < p2.y) ? 1 : -1;
-	diry = (p1.y == p2.y) ? 0 : diry;
-
+	fdf_init_lineparams(&line, &p1, &p2);
 	while (p1.x != p2.x && p1.y != p2.y)
 	{
-		put_pixel_to_img(&mlx->img, p1.x, p1.y, p1.color);
-		p1.x += dirx;
-		p1.y += diry;
+		put_pixel_to_img(&mlx->img, p1.x, p1.y, color);
+		p1.x += line.dirx;
+		p1.y += line.diry;
 	}
-	put_pixel_to_img(&mlx->img, p2.x, p2.y, p2.color);
+	put_pixel_to_img(&mlx->img, p2.x, p2.y, color);
 }
 
-void	draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2)
+void	draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2, int color)
 {
-	int		dx;
-	int 	dy;
-	int 	dirx;
-	int 	diry;
 	int 	error;
+	t_line	line;
 
-	dx = ft_abs(p1.x - p2.x);
-	dy = ft_abs(p1.y - p2.y);
-	dirx = (p1.x < p2.x) ? 1 : -1;
-	diry = (p1.y < p2.y) ? 1 : -1;
-	error = dx - dy;
-
+	fdf_init_lineparams(&line, &p1, &p2);
+	error = line.dx - line.dy;
+	if(line.dx == line.dy)
+		draw_straight_line(mlx, p1, p2, color);
 	while (p1.x != p2.x || p1.y != p2.y)
 	{
-		put_pixel_to_img(&mlx->img, p1.x, p1.y, p1.color);
-		if (error * 2 > -dy)
+		put_pixel_to_img(&mlx->img, p1.x, p1.y, color);
+		if (error * 2 > -line.dy)
 		{
-			error -= dy;
-			p1.x += dirx;
+			error -= line.dy;
+			p1.x += line.dirx;
 		}
 		if (error * 2 < dx)
 		{
-			error += dx;
-			p1.y += diry;
+			error += line.dx;
+			p1.y += line.diry;
 		}
 	}
-	put_pixel_to_img(&mlx->img, p2.x, p2.y, p2.color);
+	put_pixel_to_img(&mlx->img, p2.x, p2.y, color);
 }
 
 /*
