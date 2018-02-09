@@ -32,9 +32,11 @@ void	fdf_init_gradientparams(t_gradient *grad, t_point *p1, t_point *p2)
 	grad->g = rgb_get_gvalue(p1->color);
 	grad->b = rgb_get_bvalue(p1->color);
 	len = sqrt(pow(p1->x - p2->x, 2) + pow(p1->y - p2->y, 2));
-	grad->dr = (rgb_get_rvalue(p2->color) - grad->r) / len;
-	grad->dg = (rgb_get_gvalue(p2->color) - grad->g) / len;
-	grad->db = (rgb_get_bvalue(p2->color) - grad->b) / len;
+	//printf("len = %d   delta = %f \n", len, (rgb_get_rvalue(p2->color) - grad->r) / (float)len);
+	grad->dr = (rgb_get_rvalue(p2->color) - grad->r) / (float)len;
+	grad->dg = (rgb_get_gvalue(p2->color) - grad->g) / (float)len;
+	grad->db = (rgb_get_bvalue(p2->color) - grad->b) / (float)len;
+
 }
 
 int 	fdf_getnext_color_gradient(t_gradient *grad)

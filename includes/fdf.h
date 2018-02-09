@@ -46,12 +46,12 @@ typedef struct	s_line
 
 typedef struct	s_gradient
 {
-	int 		r;
-	int 		g;
-	int 		b;
-	int 		dr;
-	int 		dg;
-	int 		db;
+	float 		r;
+	float 		g;
+	float 		b;
+	float 		dr;
+	float 		dg;
+	float 		db;
 }				t_gradient;
 
 void			draw_straight_line(t_mlx *mlx, t_point p1, t_point p2,
