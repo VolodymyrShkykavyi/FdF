@@ -17,6 +17,7 @@ static int fdf_get_map_heaight(char **argv)
 {
 	char	*line;
 	int		h;
+	int		fd;
 
 	h = 0;
 	fd = open(argv[1], O_RDONLY);

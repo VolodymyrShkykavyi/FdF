@@ -15,6 +15,7 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <stdlib.h>
 # include "ft_mlx_image.h"
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
@@ -71,4 +72,6 @@ int				rgb_get_color(int r, int g, int b);
 unsigned char	rgb_get_gvalue(int color);
 unsigned char	rgb_get_rvalue(int color);
 int 	fdf_getnext_color_gradient(t_gradient *grad);
+void	draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2);
+void	draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2);
 #endif
