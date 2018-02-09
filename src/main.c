@@ -55,7 +55,7 @@ int 	main(int argc, char **argv)
 	//draw_bresenham_line(mlx_info, p1, p2, p1.color);
 	draw_gradient_bresenham_line(mlx_info, p1, p2);
 
-	mlx_put_image_to_window(mlx_info->mlx_ptr, mlx_info->win_ptr, mlx_info->img.img_ptr, 10, 30);
+	mlx_put_image_to_window(mlx_info->mlx_ptr, mlx_info->win_ptr, mlx_info->img.img_ptr, 0, 0);
 	mlx_loop(mlx_info->mlx_ptr);
 	return (0);
 }

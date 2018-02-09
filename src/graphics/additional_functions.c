@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 void	fdf_init_lineparams(t_line *line, t_point *p1, t_point *p2)
 {
@@ -36,7 +36,6 @@ void	fdf_init_gradientparams(t_gradient *grad, t_point *p1, t_point *p2)
 	grad->dr = (rgb_get_rvalue(p2->color) - grad->r) / (float)len;
 	grad->dg = (rgb_get_gvalue(p2->color) - grad->g) / (float)len;
 	grad->db = (rgb_get_bvalue(p2->color) - grad->b) / (float)len;
-
 }
 
 int 	fdf_getnext_color_gradient(t_gradient *grad)

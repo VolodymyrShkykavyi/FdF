@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mlx_image.h"
+#include "../../includes/ft_mlx_image.h"
 #include "stdlib.h"
 
 t_mlx	*init_mlx_and_img(int width, int height, char *title)

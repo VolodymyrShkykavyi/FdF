@@ -12,8 +12,10 @@
 
 int		rgb_get_color(int r, int g, int b)
 {
-/*	if (r < 0 || g < 0 || b < 0
-			|| r > 0xFF || g > 0xFF || b > 0xFF)
-		return (0);*/
+	if (r < 0 || g < 0 || b < 0)
+		return (0);
+	r = (r > 0xFF) ? 0xFF : r;
+	g = (g > 0xFF) ? 0xFF : g;
+	b = (b > 0xFF) ? 0xFF : b;
 	return (r * 0x010000 + g * 0x0100 + b);
 }
