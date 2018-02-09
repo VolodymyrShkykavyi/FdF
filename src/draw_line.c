@@ -17,18 +17,21 @@
 
 void 	draw_straight_line(t_mlx *mlx, t_point p1, t_point p2, int color)
 {
-	if (p1.x > p2.x || p1.y > p2.y)
-		swap_points(&p1, &p2);
-	if (p1.y == p2.y)
+	int		dirx;
+	int 	diry;
+
+	dirx = (p1.x < p2.x) ? 1 : -1;
+	dirx = (p1.x == p2.x) ? 0 : dirx;
+	diry = (p1.y < p2.y) ? 1 : -1;
+	diry = (p1.y == p2.y) ? 0 : diry;
+
+	while (p1.x != p2.x && p1.y != p2.y)
 	{
-		while (p1.x <= p2.x)
-			put_pixel_to_img(&mlx->img, p1.x++, p1.y, color);
+		put_pixel_to_img(&mlx->img, p1.x, p1.y, p1.color);
+		p1.x += dirx;
+		p1.y += diry;
 	}
-	else
-	{
-		while (p1.y <= p2.y)
-			put_pixel_to_img(&mlx->img, p1.x, p1.y++, color);
-	}
+	put_pixel_to_img(&mlx->img, p2.x, p2.y, p2.color);
 }
 
 void	draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_change_alpha_in_argb.c                         :+:      :+:    :+:   */
+/*   rgb_get_gvalue.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:38:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2018/02/09 01:09:00 by vshkykav          #+#    #+#             */
+/*   Updated: 2018/02/09 01:09:00 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		 fdf_change_alpha_in_argb(int color, int alpha)
+unsigned char	rgb_get_gvalue(int color)
 {
-	return ((color - (int)(color / 0xFFFFFF) * 0x01000000) + (/*0xFF - */alpha) * 0x01000000);
+	return ((color & 0xFF00) / 0x0100);
 }

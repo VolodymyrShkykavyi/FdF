@@ -47,6 +47,8 @@ typedef struct	s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	int			height;
+	int			width;
 	t_img		img;
 }				t_mlx;
 

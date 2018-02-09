@@ -23,6 +23,7 @@ int 	main(int argc, char **argv)
 
 	int		i;
 	t_mlx	*mlx_info;
+	t_map	map_info;
 	t_point	p1;
 	t_point	p2;
 
@@ -31,6 +32,8 @@ int 	main(int argc, char **argv)
 		ft_printf("Usage : %s <filename>\n", argv[0]);
 		return (0);
 	}
+	if (fdf_read_map(argv, &map_info))
+		return (0);
 	mlx_info = init_mlx_and_img(800, 600, "FdF");
 	fdf_run_hooks(mlx_info->win_ptr);
 

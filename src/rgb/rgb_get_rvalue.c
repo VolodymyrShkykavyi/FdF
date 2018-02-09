@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_get_argb.c                                     :+:      :+:    :+:   */
+/*   rgb_get_rvalue.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/08 00:17:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 00:17:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2018/02/09 01:08:00 by vshkykav          #+#    #+#             */
+/*   Updated: 2018/02/09 01:08:00 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		fdf_get_argb(int a, int r, int g, int b)
+unsigned char	rgb_get_rvalue(int color)
 {
-	return (a * 0x01000000 + r * 0x010000 + g * 0x0100 + b);
+	return ((color & 0xFF0000) / 0x010000);
 }

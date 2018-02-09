@@ -27,6 +27,13 @@ typedef struct	s_point
 	int			color;
 }				t_point;
 
+typedef struct	s_map
+{
+	char		**map;
+	int			width;
+	int 		height;
+	t_point		center;
+}				t_map;
 
 void			draw_straight_line(t_mlx *mlx, t_point p1, t_point p2,
 								   int color);
@@ -36,5 +43,5 @@ int				fdf_change_alpha_in_argb(int color, int alpha);
 int				fdf_get_argb(int a, int r, int g, int b);
 float			get_fraction(float num);
 void			fdf_run_hooks(void *win_ptr);
-
+int		fdf_read_map(char **argv, t_map *map_info);
 #endif

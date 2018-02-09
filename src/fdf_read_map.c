@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx_and_img.c                                 :+:      :+:    :+:   */
+/*   fdf_read_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 18:03:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/07 18:03:00 by vshkykav         ###   ########.fr       */
+/*   Created: 2018/02/09 02:00:00 by vshkykav          #+#    #+#             */
+/*   Updated: 2018/02/09 02:00:00 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mlx_image.h"
-#include "stdlib.h"
+#include "../includes/fdf.h"
+#include <fcntl.h>
 
-t_mlx	*init_mlx_and_img(int width, int height, char *title)
+static int fdf_get_map_heaight(char **argv)
 {
-	t_mlx	*mlx_info;
+	char	*line;
+	int		h;
 
-	mlx_info =  (t_mlx *)malloc(sizeof(t_mlx));
-	mlx_info->mlx_ptr = mlx_init();
-	mlx_info->win_ptr = mlx_new_window(mlx_info->mlx_ptr, width, height, title);
-	mlx_info->height = height;
-	mlx_info->width = width;
-	init_img_struct(mlx_info, width, height);
-	return (mlx_info);
+	h = 0;
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (1);
+	while (get_next_line(fd, &line) > 0)
+	{
+		h++;
+		free(line);
+	}
+	return (h);
+}
+
+int		fdf_read_map(char **argv, t_map *map_info)
+{
+	map_info->height = fdf_get_map_heaight(argv);
+
 }
