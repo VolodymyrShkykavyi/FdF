@@ -16,7 +16,7 @@ SRC = ft_memalloc.c ft_putstr_fd.c ft_strncat.c ft_memccpy.c ft_putwchar.c ft_st
 	ft_striteri.c ft_toupper.c ft_lstdelone.c ft_putnbr_fd.c ft_strjoin.c ft_uitoa_base.c \
 	ft_lstiter.c ft_putnchar.c ft_strlcat.c ft_utf8_bytelen.c ft_lstmap.c ft_putnstr.c \
 	ft_strlen.c ft_wstrsize.c ft_lstnew.c ft_putnwstr.c ft_strmap.c get_next_line.c \
-	ft_lstsize.c ft_putstr.c ft_strmapi.c ft_free_2arr.c ft_abs.c \
+	ft_lstsize.c ft_putstr.c ft_strmapi.c ft_free_2arr.c ft_abs.c ft_atoi_hex.c \
 	$(addprefix ft_printf/, ft_printf_cast_unum.c ft_specinfo_init.c specificator_manager.c \
 	ft_printf.c ft_printf_getcolor.c print_manager.c $(addprefix formats/, format_b.c format_c.c \
 	format_d_i.c format_n.c format_o.c format_p.c format_s.c format_u.c format_x.c))

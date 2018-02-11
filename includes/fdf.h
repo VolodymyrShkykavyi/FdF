@@ -34,9 +34,11 @@ typedef struct	s_map
 	char		**map;
 	t_point		**matrix;
 	t_point		**result;
+	int			line_len;
 	int			width;
 	int 		height;
-	t_point		center;
+	int			bot_color;
+	int 		top_color;
 	int			rotate_ox;
 	int 		rotate_oy;
 	int 		rotate_oz;
@@ -80,5 +82,6 @@ unsigned char	rgb_get_rvalue(int color);
 int 			fdf_getnext_color_gradient(t_gradient *grad);
 void			draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2);
 void			draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2);
-void			fdf_draw_map(t_point **map, t_map *map_info, t_mlx *mlx);
+void	fdf_draw_map(t_map *map_info, t_mlx *mlx);
+int		fdf_init_map_matrix(t_mlx *mlx, t_map *map_info);
 #endif

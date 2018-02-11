@@ -114,6 +114,6 @@ char				*ft_uitoa_base(uintmax_t num, short base);
 int					ft_chrin_str(const char *s, int c);
 int					get_next_line(const int fd, char **line);
 void				ft_free_2arr(char **arr);
-
+int					ft_atoi_hex(const char *str);
 int					ft_abs(int num);
 #endif

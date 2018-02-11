@@ -36,7 +36,7 @@ void	draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2, int color)
 
 	fdf_init_lineparams(&line, &p1, &p2);
 	error = line.dx - line.dy;
-	while (p1.x != p2.x || p1.y != p2.y)
+	while (p1.x <= p2.x && p1.y <= p2.y)
 	{
 		put_pixel_to_img(&mlx->img, p1.x, p1.y, color);
 		if (error * 2 > -line.dy)

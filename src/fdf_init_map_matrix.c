@@ -12,41 +12,61 @@
 
 #include "../includes/fdf.h"
 
-int		fdf_init_map_matrix(t_map *map_info)
+static void	fdf_save_map_point(t_mlx *mlx, t_map *map_info, t_point p, char **arr)
+{
+	int offset_x;
+	int offset_y;
+	int i;
+
+	offset_x = mlx->width / 2 - (map_info->width * map_info->line_len) / 2;
+	offset_y = mlx->height / 2 - (map_info->height * map_info->line_len) / 2;
+	map_info->matrix[p.y][p.x].x = p.x * map_info->line_len + offset_x;
+	map_info->matrix[p.y][p.x].y = p.y * map_info->line_len + offset_y;
+	map_info->matrix[p.y][p.x].z = ft_atoi(arr[p.x]) * map_info->line_len;
+	i = 0;
+	while (ft_isdigit(arr[p.x][i]))
+		i++;
+	if (arr[p.x][i] == '\0')
+		map_info->matrix[p.y][p.x].color = -1;
+	else if (arr[p.x][i] != ',')
+	{
+		ft_putstr("not a valid map\n");
+		exit(2);
+	}
+	else
+	{
+		map_info->matrix[p.y][p.x].color = ft_atoi_hex(&(arr[p.x][i + 1]));
+		printf("input: %s  color in int: %i, hex %x\n", &(arr[p.x][i + 1]), map_info->matrix[p.y][p.x].color, map_info->matrix[p.y][p.x].color);
+	}
+}
+
+int		fdf_init_map_matrix(t_mlx *mlx, t_map *map_info)
 {
 	char	**arr;
-	int 	i;
-	int 	j;
+	t_point	p;
+	int 	min_z;
+	int 	max_z;
 
-	MALL_CHECK(map_info->matrix = (t_point **)malloc(
-			sizeof(t_point *) * (map_info->height + 1)))
-	MALL_CHECK(map_info->result = (t_point **)malloc(
-			sizeof(t_point *) * (map_info->height + 1)))
-	map_info->matrix[map_info->height] = NULL;
-	map_info->result[map_info->height] = NULL;
-	i = -1;
-	while (++i < map_info->height)
+	MALL_CHECK((map_info->matrix = (t_point **)malloc(
+			sizeof(t_point *) * (map_info->height))))
+	p.y = -1;
+	while (++p.y < map_info->height)
 	{
-		j = -1;
-		MALL_CHECK(arr = ft_strsplit(map_info->map[i]));
-		while (++j < map_info->width)
+		p.x = -1;
+		MALL_CHECK((arr = ft_strsplit(map_info->map[p.y], ' ')))
+		MALL_CHECK((map_info->matrix[p.y] = (t_point *)malloc(
+				sizeof(t_point) * (map_info->width))))
+		while (++p.x < map_info->width)
 		{
-			MALL_CHECK(map_info->matrix[i] = (t_point *)malloc(
-					sizeof(t_point) * (map_info->width + 1)))
-			MALL_CHECK(map_info->result[i] = (t_point *)malloc(
-					sizeof(t_point) * (map_info->width + 1)))
-			map_info->matrix[i][map_info->width] = NULL;
-			map_info->result[i][map_info->width] = NULL;
-			MALL_CHECK((arr[j]) || (j + 1 == map_info->width && arr[j + 1]))
-			map_info->matrix[i][j].x = j;
-			map_info->result[i][j].x = j;
-			map_info->matrix[i][j].y = i;
-			map_info->result[i][j].y = i;
-			map_info->matrix[i][j].z = ft_atoi(arr[j]);
-			map_info->matrix[i][j].z = map_info->matrix[i][j].z;
-			map_info->matrix[i][j].color = 0x12FF00;
-			map_info->result[i][j].color = 0x12FF00;
+			fdf_save_map_point(mlx, map_info, p, arr);
+			if (p.x == 0 && p.y == 0)
+			{
+				min_z = map_info->matrix[p.y][p.x].z;
+				max_z = min_z;
+			}
 		}
 		ft_free_2arr(arr);
 	}
+	//fdf_
+	return (0);
 }

@@ -13,21 +13,23 @@
 #include "../includes/fdf.h"
 #include <fcntl.h>
 
-static int fdf_get_map_heaight(char **argv)
+static int fdf_get_map_height(char **argv)
 {
 	char	*line;
 	int		h;
 	int		fd;
 
 	h = 0;
+	//printf("argv[1] = %s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		return (1);
+	if (fd == -1)
+		return (0);
 	while (get_next_line(fd, &line) > 0)
 	{
 		h++;
 		free(line);
 	}
+	//printf("end counting height\n");
 	close(fd);
 	return (h);
 }
@@ -45,9 +47,10 @@ static int	fdf_save_map(char **argv, t_map *map_info)
 	while (get_next_line(fd, &line) > 0)
 	{
 		map_info->map[i++] = ft_strdup(line);
-		free(&line);
+		ft_strdel(&line);
 	}
 	close(fd);
+//	printf("map saved\n");
 	return (0);
 }
 
@@ -56,7 +59,8 @@ int		fdf_read_map(char **argv, t_map *map_info)
 	char 	**arr;
 	int		i;
 
-	map_info->height = fdf_get_map_heaight(argv);
+	map_info->height = fdf_get_map_height(argv);
+//	printf("map h: %d\n", map_info->height);
 	if (!(map_info->map = (char **)malloc(
 			sizeof(char *) * (map_info->height + 1))))
 		return (1);
