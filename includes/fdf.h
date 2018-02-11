@@ -13,6 +13,7 @@
 #ifndef FDF_H
 # define FDF_H
 
+# define MALL_CHECK(x) if(!x) exit(1);
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
@@ -31,6 +32,7 @@ typedef struct	s_point
 typedef struct	s_map
 {
 	char		**map;
+	t_point		**matrix;
 	int			width;
 	int 		height;
 	t_point		center;
