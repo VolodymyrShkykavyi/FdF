@@ -36,7 +36,26 @@ static void	fdf_save_map_point(t_mlx *mlx, t_map *map_info, t_point p, char **ar
 	else
 	{
 		map_info->matrix[p.y][p.x].color = ft_atoi_hex(&(arr[p.x][i + 1]));
-		printf("input: %s  color in int: %i, hex %x\n", &(arr[p.x][i + 1]), map_info->matrix[p.y][p.x].color, map_info->matrix[p.y][p.x].color);
+		//printf("input: %s  color in int: %i, hex %x\n", &(arr[p.x][i + 1]), map_info->matrix[p.y][p.x].color, map_info->matrix[p.y][p.x].color);
+	}
+}
+
+static void	fdf_map_poit_colors(t_map *map_info, int min_z, int max_z)
+{
+	int 	i;
+	int 	j;
+
+	i = -1;
+	while (++i < map_info->height)
+	{
+		j = -1;
+		while (++j < map_info->width)
+		{
+			if (map_info->matrix[i][j].color == -1)
+			{
+				//change
+			}
+		}
 	}
 }
 
@@ -64,9 +83,13 @@ int		fdf_init_map_matrix(t_mlx *mlx, t_map *map_info)
 				min_z = map_info->matrix[p.y][p.x].z;
 				max_z = min_z;
 			}
+			if (min_z > map_info->matrix[p.y][p.x].z)
+				min_z = map_info->matrix[p.y][p.x].z;
+			if (max_z < map_info->matrix[p.y][p.x].z)
+				max_z = map_info->matrix[p.y][p.x].z;
 		}
 		ft_free_2arr(arr);
 	}
-	//fdf_
+	fdf_map_poit_colors(map_info, min_z, max_z);
 	return (0);
 }

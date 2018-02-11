@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int		ft_atoi_hex(const char *str)
 {
@@ -20,11 +19,8 @@ int		ft_atoi_hex(const char *str)
 	res = 0;
 	if (!str)
 		return (0);
-	if (*(str + 1) == '0' && (*(str + 2) == 'x' || *(str + 2) == 'X'))
-	{
-		ft_putstr("skip 2 chars\n");
+	if (*(str) == '0' && (*(str + 1) == 'x' || *(str + 1) == 'X'))
 		str += 2;
-	}
 	while ((*str >= '0' && *str <= '9') ||
 			(ft_tolower(*str) >= 'a' && ft_tolower(*str) <= 'f'))
 	{
