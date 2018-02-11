@@ -32,15 +32,14 @@ int 	main(int argc, char **argv)
 		ft_printf("Usage : %s <filename>\n", argv[0]);
 		return (0);
 	}
+	mlx_info = init_mlx_and_img(800, 600, "FdF");
+	fdf_run_hooks(mlx_info->win_ptr);
 	//read map and save it
 	printf("res of read map %i\n", fdf_read_map(argv, &map_info));
 	//translate map into matrix
 	if (fdf_init_map_matrix(&map_info))
 		return (0);
 
-
-	mlx_info = init_mlx_and_img(800, 600, "FdF");
-	fdf_run_hooks(mlx_info->win_ptr);
 	ft_printarr(map_info.map);
 
 

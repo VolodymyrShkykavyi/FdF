@@ -33,9 +33,13 @@ typedef struct	s_map
 {
 	char		**map;
 	t_point		**matrix;
+	t_point		**result;
 	int			width;
 	int 		height;
 	t_point		center;
+	int			rotate_ox;
+	int 		rotate_oy;
+	int 		rotate_oz;
 }				t_map;
 
 typedef struct	s_line
@@ -63,7 +67,7 @@ void			draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2,
 void			swap_points(t_point *p1, t_point *p2);
 float			get_fraction(float num);
 void			fdf_run_hooks(void *win_ptr);
-int		fdf_read_map(char **argv, t_map *map_info);
+int				fdf_read_map(char **argv, t_map *map_info);
 
 void			fdf_init_lineparams(t_line *line, t_point *p1, t_point *p2);
 void			fdf_init_gradientparams(t_gradient *grad, t_point *p1, t_point *p2);
@@ -73,7 +77,8 @@ unsigned char	rgb_get_bvalue(int color);
 int				rgb_get_color(int r, int g, int b);
 unsigned char	rgb_get_gvalue(int color);
 unsigned char	rgb_get_rvalue(int color);
-int 	fdf_getnext_color_gradient(t_gradient *grad);
-void	draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2);
-void	draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2);
+int 			fdf_getnext_color_gradient(t_gradient *grad);
+void			draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2);
+void			draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2);
+void			fdf_draw_map(t_point **map, t_map *map_info, t_mlx *mlx);
 #endif
