@@ -40,12 +40,13 @@ int 	main(int argc, char **argv)
 	map_info.line_len = 20;
 	map_info.bot_color = 0x4f3207; //brown
 	map_info.top_color = 0xffffff;
-	ft_printarr(map_info.map);
+	map_info.move_x = 0;
+	map_info.move_y = 0;
+	//ft_printarr(map_info.map);
 	//printf("res of read map %i\n", fdf_read_map(argv, &map_info));
 	//translate map into matrix
-	if (fdf_init_map_matrix(mlx_info, &map_info))
-		return (0);
-	//fdf_get_result_map(&map_info);
+	fdf_init_map_matrix(mlx_info, &map_info);
+	fdf_get_result_map(&map_info);
 	fdf_draw_map(&map_info, mlx_info);
 
 	i = 0;

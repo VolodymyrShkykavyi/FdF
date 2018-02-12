@@ -12,6 +12,16 @@
 
 #include "../includes/fdf.h"
 
+void	fdf_rotate_ox(int degree, t_map *map_info)
+{
+
+}
+
+void	fdf_rotate_oy(int degree, t_map *map_info)
+{
+
+}
+
 void	fdf_rotate_oz(int degree, t_map *map_info)
 {
 
