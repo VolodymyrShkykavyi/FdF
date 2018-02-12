@@ -23,5 +23,7 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 		return ;
 	if (color < 0)
 		color = 0;
+	if (x > img->size_line)
+		return ;
 	img->img_data[width * y + x] = color;
 }

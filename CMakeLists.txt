@@ -15,6 +15,8 @@ add_executable(fdf
         src/graphics
         src/hooks.c
         src/swap_points.c
+        src/fdf_get_result_map.c
+        src/fdf_rotate.c
 
         src/graphics/additional_functions.c
         src/graphics/draw_line.c
@@ -27,6 +29,7 @@ add_executable(fdf
         src/graphics/init_mlx_and_img.c
         src/graphics/rgb_get_bvalue.c
         src/graphics/rgb_get_gvalue.c
+
 
         Makefile)
 

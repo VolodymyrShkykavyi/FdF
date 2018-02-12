@@ -12,17 +12,19 @@
 
 #include "../includes/fdf.h"
 
-void	fdf_rotate_ox(int degree, t_map *map_info)
+void	fdf_rot_x_change(int degree, t_map *map_info)
 {
-	map_info->rot_x += degree * PI / 180;
+	map_info->rot_x += degree * M_PI / 180;
 }
 
-void	fdf_rotate_oy(int degree, t_map *map_info)
+void	fdf_rot_y_change(int degree, t_map *map_info)
 {
-	map_info->rot_y += degree * PI / 180;
+	map_info->rot_y += degree * M_PI / 180;
 }
 
-void	fdf_rotate_oz(int degree, t_map *map_info)
+void	fdf_rot_z_change(int degree, t_map *map_info)
 {
-	map_info->rot_z += degree * PI / 180;
+	map_info->rot_z += degree * M_PI / 180;
 }
+
+//void	fdf_rotate_x()

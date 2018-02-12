@@ -20,50 +20,36 @@
 
 int 	main(int argc, char **argv)
 {
-
-	int		i;
 	t_mlx	*mlx_info;
 	t_map	map_info;
-	t_point	p1;
-	t_point	p2;
 
 	if (argc == 1)
 	{
 		ft_printf("Usage : %s <filename>\n", argv[0]);
 		return (0);
 	}
-
-	mlx_info = init_mlx_and_img(800, 600, "FdF");
-	fdf_run_hooks(mlx_info->win_ptr);
-	//read map and save it
-	fdf_read_map(argv, &map_info);
-	map_info.line_len = 20;
+	//map_info.line_len = 20;
 	map_info.bot_color = 0x4f3207; //brown
 	map_info.top_color = 0xffffff;
+	if (argc == 4)
+	{
+		map_info.bot_color = ft_atoi_hex(argv[2]);
+		map_info.top_color = ft_atoi_hex(argv[3]);
+	}
 	map_info.move_x = 0;
 	map_info.move_y = 0;
-	//ft_printarr(map_info.map);
-	//printf("res of read map %i\n", fdf_read_map(argv, &map_info));
-	//translate map into matrix
+	mlx_info = init_mlx_and_img(1024, 768, "FdF");
+	//read map and save it
+	fdf_read_map(argv, &map_info);
 	fdf_init_map_matrix(mlx_info, &map_info);
+	map_info.line_len = mlx_info->height * 4 / (6 * map_info.height);
+	map_info.line_len = (map_info.line_len > 35) ? 35 : map_info.line_len;
 	fdf_get_result_map(&map_info);
 	fdf_draw_map(&map_info, mlx_info);
 
-	i = 0;
-	/*while (++i < 300)
-		put_pixel_to_img(&(mlx_info->img), i, 70, 0x00ffff);
-	i = 0;
-	while (++i < 300)
-		put_pixel_to_img(&(mlx_info->img), i, 75, 0x00ffff);*/
-//	p1.x = 50;
-//	p1.y = 50;
-//	p2.x = 450;
-//	p2.y = 100;
-//	p1.color = 0xFFFFFF;
-//	p2.color = 0xFF0000;
-//	draw_gradient_bresenham_line(mlx_info, p1, p2);
-
-	mlx_put_image_to_window(mlx_info->mlx_ptr, mlx_info->win_ptr, mlx_info->img.img_ptr, 0, 0);
+	fdf_run_hooks(mlx_info, &map_info);
+	//printf("before loop\n");
+	mlx_string_put(mlx_info->mlx_ptr, mlx_info->win_ptr, 50, 700, 0xFF0000, "iADFSDF");
 	mlx_loop(mlx_info->mlx_ptr);
 	return (0);
 }

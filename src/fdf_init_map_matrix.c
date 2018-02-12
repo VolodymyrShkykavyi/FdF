@@ -80,7 +80,7 @@ static void	fdf_map_point_colors(t_map *map_info, int min_z, int max_z)
 	p2.y = max_z;
 	p1.color = map_info->bot_color;
 	p2.color = map_info->top_color;
-	fdf_init_gradientparams(&grad, p1, p2);
+	fdf_init_gradientparams(&grad, &p1, &p2);
 	while (++i < map_info->height)
 	{
 		j = -1;

@@ -18,7 +18,7 @@ void	fdf_draw_map(t_map *map_info, t_mlx *mlx)
 	int 	j;
 
 	i = -1;
-	//printf("start drawing\n");
+	ft_bzero(mlx->img.img_data, (size_t)mlx->height * mlx->width * 4);
 	while (++i < map_info->height)
 	{
 		j = -1;
@@ -28,15 +28,12 @@ void	fdf_draw_map(t_map *map_info, t_mlx *mlx)
 			{
 				draw_gradient_bresenham_line(mlx, map_info->result[i][j],
 											map_info->result[i][j + 1]);
-//				printf("draw from(i:%d J:%d) x = %d y = %d to x = %d y = %d\n", i, j,map_info->matrix[i][j].x, map_info->matrix[i][j].y, map_info->matrix[i][j + 1].x, map_info->matrix[i][j + 1].y);
-
-//				printf("res matrix y[%d] x[%d][z] = [%d][%d][%d]\n", i, j, map_info->matrix[i][j].y , map_info->matrix[i][j].x, map_info->matrix[i][j].z);
-
 			}
 			if (i + 1 < map_info->height)
 				draw_gradient_bresenham_line(mlx, map_info->result[i][j],
 											map_info->result[i + 1][j]);
 		}
 	}
-	//printf("end drawing\n");
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
+	printf("draw map end\n");
 }

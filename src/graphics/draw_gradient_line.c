@@ -27,8 +27,6 @@ void	draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2)
 	while (p1.x != p2.x || p1.y != p2.y)
 	{
 		put_pixel_to_img(&mlx->img, p1.x, p1.y, p1.color);
-//		printf("x = %d y = %d col = %x\t\tgrad(%x  %x  %x) dr=%d dg=%d  db=%d\n",
-//			p1.x, p1.y, p1.color, grad.r, grad.g, grad.b, grad.dr, grad.dg, grad.db);
 		p1.x += line.dirx;
 		p1.y += line.diry;
 		p1.color = fdf_getnext_color_gradient(&grad);
@@ -45,18 +43,16 @@ void	draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2)
 	fdf_init_lineparams(&line, &p1,&p2);
 	fdf_init_gradientparams(&grad, &p1, &p2);
 	error = line.dx - line.dy;
-//	printf("x1 = %d y1 = %d | x2 = %d y2 = %d \n", p1.x, p1.y, p2.x, p2.y);
-	while (p1.x <= p2.x && p1.y <= p2.y)
+	while (p1.x != p2.x || p1.y != p2.y)
 	{
-		put_pixel_to_img(&mlx->img, p1.x, p1.y, p1.color);
-//		printf("x1 = %d y1 = %d | x2 = %d y2 = %d col = %x\t\tgrad(%x  %x  %x) dr=%d dg=%d  db=%d\n",
-//			p1.x, p1.y, p2.x, p2.y, p1.color, grad.r, grad.g, grad.b, grad.dr, grad.dg, grad.db);
-		if (error * 2 > -line.dy)
+		if (p1.x < mlx->width && p1.y < mlx->height)
+			put_pixel_to_img(&mlx->img, p1.x, p1.y, p1.color);
+		if (error * 2 > -line.dy && p1.x != p2.x)
 		{
 			error -= line.dy;
 			p1.x += line.dirx;
 		}
-		if (error * 2 < line.dx)
+		if (error * 2 < line.dx && p1.y != p2.y)
 		{
 			error += line.dx;
 			p1.y += line.diry;
