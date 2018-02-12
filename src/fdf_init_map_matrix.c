@@ -65,40 +65,38 @@ static void	fdf_save_map_point(t_mlx *mlx, t_map *map_info, t_point p, char **ar
 	}
 }
 
-static void	fdf_map_point_colors(t_map *map_info, int min_z, int max_z)
-{
-	int 		i;
-	int 		j;
-	t_gradient	grad;
-	t_point		p1;
-	t_point		p2;
-
-	i = -1;
-	p1.x = 0;
-	p2.x = 0;
-	p1.y = min_z;
-	p2.y = max_z;
-	p1.color = map_info->bot_color;
-	p2.color = map_info->top_color;
-	fdf_init_gradientparams(&grad, &p1, &p2);
-	while (++i < map_info->height)
-	{
-		j = -1;
-		while (++j < map_info->width)
-			if (map_info->matrix[i][j].color == -1)
-				map_info->matrix[i][j].color = rgb_get_color(
-						grad.r + grad.dr * (map_info->matrix[i][j].z - min_z),
-						grad.g + grad.dg * (map_info->matrix[i][j].z - min_z),
-						grad.b + grad.db * (map_info->matrix[i][j].z - min_z));
-	}
-}
+//void	fdf_map_point_colors(t_map *map_info, int	reset_flag)
+//{
+//	int 		i;
+//	int 		j;
+//	t_gradient	grad;
+//	t_point		p1;
+//	t_point		p2;
+//
+//	i = -1;
+//	p1.x = 0;
+//	p2.x = 0;
+//	p1.y = map_info->min_z;
+//	p2.y = map_info->max_z;
+//	p1.color = map_info->bot_color;
+//	p2.color = map_info->top_color;
+//	fdf_init_gradientparams(&grad, &p1, &p2);
+//	while (++i < map_info->height)
+//	{
+//		j = -1;
+//		while (++j < map_info->width)
+//			if (map_info->matrix[i][j].color == -1 || reset_flag == 1)
+//				map_info->matrix[i][j].color = rgb_get_color(
+//						grad.r + grad.dr * (map_info->matrix[i][j].z - min_z),
+//						grad.g + grad.dg * (map_info->matrix[i][j].z - min_z),
+//						grad.b + grad.db * (map_info->matrix[i][j].z - min_z));
+//	}
+//}
 
 void		fdf_init_map_matrix(t_mlx *mlx, t_map *map_info)
 {
 	char	**arr;
 	t_point	p;
-	int 	min_z;
-	int 	max_z;
 
 	MALL_CHECK((map_info->matrix = (t_point **)malloc(
 			sizeof(t_point *) * (map_info->height))))
@@ -112,13 +110,15 @@ void		fdf_init_map_matrix(t_mlx *mlx, t_map *map_info)
 		while (++p.x < map_info->width)
 		{
 			fdf_save_map_point(mlx, map_info, p, arr);
-			if (min_z > map_info->matrix[p.y][p.x].z || (p.x == 0 && p.y == 0))
-				min_z = map_info->matrix[p.y][p.x].z;
-			if (max_z < map_info->matrix[p.y][p.x].z || (p.x == 0 && p.y == 0))
-				max_z = map_info->matrix[p.y][p.x].z;
+			if (map_info->min_z > map_info->matrix[p.y][p.x].z ||
+					(p.x == 0 && p.y == 0))
+				map_info->min_z = map_info->matrix[p.y][p.x].z;
+			if (map_info->max_z < map_info->matrix[p.y][p.x].z ||
+					(p.x == 0 && p.y == 0))
+				map_info->max_z = map_info->matrix[p.y][p.x].z;
 		}
 		ft_free_2arr(arr);
 	}
-	fdf_map_point_colors(map_info, min_z, max_z);
+	fdf_map_point_colors(map_info, 0);
 	fdf_init_result_matrix(mlx, map_info);
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
-
+/*
 void	draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2)
 {
 	t_line		line;
@@ -33,7 +33,7 @@ void	draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2)
 	}
 	put_pixel_to_img(&mlx->img, p2.x, p2.y, p2.color);
 }
-
+*/
 void	draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2)
 {
 	int 		error;

@@ -12,7 +12,7 @@
 
 #include "../../includes/fdf.h"
 
-
+/*
 #include <stdio.h>
 
 void 	draw_straight_line(t_mlx *mlx, t_point p1, t_point p2, int color)
@@ -28,7 +28,7 @@ void 	draw_straight_line(t_mlx *mlx, t_point p1, t_point p2, int color)
 	}
 	put_pixel_to_img(&mlx->img, p2.x, p2.y, color);
 }
-
+*/
 void	draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2, int color)
 {
 	int 	error;

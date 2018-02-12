@@ -20,7 +20,6 @@ static int fdf_get_map_height(char **argv)
 	int		fd;
 
 	h = 0;
-	//printf("argv[1] = %s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (0);
@@ -29,7 +28,6 @@ static int fdf_get_map_height(char **argv)
 		h++;
 		free(line);
 	}
-	//printf("end counting height\n");
 	close(fd);
 	return (h);
 }
@@ -50,7 +48,6 @@ static int	fdf_save_map(char **argv, t_map *map_info)
 		ft_strdel(&line);
 	}
 	close(fd);
-//	printf("map saved\n");
 	return (0);
 }
 
@@ -60,7 +57,6 @@ int		fdf_read_map(char **argv, t_map *map_info)
 	int		i;
 
 	map_info->height = fdf_get_map_height(argv);
-//	printf("map h: %d\n", map_info->height);
 	if (!(map_info->map = (char **)malloc(
 			sizeof(char *) * (map_info->height + 1))))
 		return (1);
