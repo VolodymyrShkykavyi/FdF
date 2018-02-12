@@ -25,13 +25,23 @@
 ** 17 - DestroyNotify
 */
 
-int 	pressed_key(int key)
+int 	pressed_key(int key, t_map *map)
 {
-	printf("key = %i\n", key);
+	printf("pressed key = %i\n", key);
 	if (key == 53)
 		exit(0);
 	return (0);
 
+}
+
+int		realezed_key(int key, t_map *map)
+{
+	if (key == -1) //C -center map
+	{
+		map->move_x = 0;
+		map->move_y = 0;
+		//rotate
+	}
 }
 
 int		mouse_click(int btn, int x, int y)
@@ -49,9 +59,10 @@ int 	close_hook()
 	exit(0);
 }
 
-void	fdf_run_hooks(void *win_ptr)
+void	fdf_run_hooks(void *win_ptr, t_map *map)
 {
 	mlx_mouse_hook(win_ptr, &mouse_click, NULL);
-	mlx_key_hook(win_ptr, &pressed_key, NULL);
+	mlx_key_hook(win_ptr, &realezed_key, map);
 	mlx_hook(win_ptr, 17, 0, &close_hook, NULL);
+	mlx_hook(win_ptr, 2, 3, &pressed_key, map);
 }

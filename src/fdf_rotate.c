@@ -14,15 +14,15 @@
 
 void	fdf_rotate_ox(int degree, t_map *map_info)
 {
-
+	map_info->rot_x += degree * PI / 180;
 }
 
 void	fdf_rotate_oy(int degree, t_map *map_info)
 {
-
+	map_info->rot_y += degree * PI / 180;
 }
 
 void	fdf_rotate_oz(int degree, t_map *map_info)
 {
-
+	map_info->rot_z += degree * PI / 180;
 }

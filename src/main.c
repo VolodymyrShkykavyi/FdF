@@ -55,13 +55,13 @@ int 	main(int argc, char **argv)
 	i = 0;
 	while (++i < 300)
 		put_pixel_to_img(&(mlx_info->img), i, 75, 0x00ffff);*/
-	p1.x = 50;
-	p1.y = 50;
-	p2.x = 450;
-	p2.y = 100;
-	p1.color = 0xFFFFFF;
-	p2.color = 0xFF0000;
-	draw_gradient_bresenham_line(mlx_info, p1, p2);
+//	p1.x = 50;
+//	p1.y = 50;
+//	p2.x = 450;
+//	p2.y = 100;
+//	p1.color = 0xFFFFFF;
+//	p2.color = 0xFF0000;
+//	draw_gradient_bresenham_line(mlx_info, p1, p2);
 
 	mlx_put_image_to_window(mlx_info->mlx_ptr, mlx_info->win_ptr, mlx_info->img.img_ptr, 0, 0);
 	mlx_loop(mlx_info->mlx_ptr);

@@ -37,11 +37,13 @@ typedef struct	s_map
 	int			line_len;
 	int			width;
 	int 		height;
+	int 		offset_x;
+	int 		offset_y;
 	int			bot_color;
 	int 		top_color;
-	int			rotate_ox;
-	int 		rotate_oy;
-	int 		rotate_oz;
+	float		rot_x;
+	float		rot_y;
+	float		rot_z;
 	int			move_x;
 	int 		move_y;
 }				t_map;
@@ -70,7 +72,7 @@ void			draw_bresenham_line(t_mlx *mlx, t_point p1, t_point p2,
 									int color);
 void			swap_points(t_point *p1, t_point *p2);
 float			get_fraction(float num);
-void			fdf_run_hooks(void *win_ptr);
+void	fdf_run_hooks(t_mlx *mlx, t_map *map);
 int				fdf_read_map(char **argv, t_map *map_info);
 
 void			fdf_init_lineparams(t_line *line, t_point *p1, t_point *p2);
@@ -86,4 +88,6 @@ void			draw_gradient_straight_line(t_mlx *mlx, t_point p1, t_point p2);
 void			draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2);
 void			fdf_draw_map(t_map *map_info, t_mlx *mlx);
 void			fdf_init_map_matrix(t_mlx *mlx, t_map *map_info);
+void			fdf_get_result_map(t_map *map_info);
+void		fdf_move_map(t_map *map_info);
 #endif

@@ -12,14 +12,15 @@
 
 #include "../includes/fdf.h"
 
-static void	fdf_init_result_matrix(t_map *map_info)
+static void	fdf_init_result_matrix(t_mlx *mlx, t_map *map_info)
 {
 	int 	i;
 	int		j;
 
+	map_info->offset_x = mlx->width / 2;
+	map_info->offset_y = mlx->height / 2;
 	MALL_CHECK((map_info->result = (t_point **)malloc(
 			sizeof(t_point *) * (map_info->height))))
-
 	i = -1;
 	while (++i < map_info->height)
 	{
@@ -119,5 +120,5 @@ void		fdf_init_map_matrix(t_mlx *mlx, t_map *map_info)
 		ft_free_2arr(arr);
 	}
 	fdf_map_point_colors(map_info, min_z, max_z);
-	fdf_init_result_matrix(map_info);
+	fdf_init_result_matrix(mlx, map_info);
 }
