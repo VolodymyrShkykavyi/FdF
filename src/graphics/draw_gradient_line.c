@@ -37,5 +37,6 @@ void	draw_gradient_bresenham_line(t_mlx *mlx, t_point p1, t_point p2)
 		}
 		p1.color = fdf_getnext_color_gradient(&grad);
 	}
-	put_pixel_to_img(&mlx->img, p2.x, p2.y, p2.color);
+	if (p2.x < mlx->width && p2.y < mlx->height)
+		put_pixel_to_img(&mlx->img, p2.x, p2.y, p2.color);
 }

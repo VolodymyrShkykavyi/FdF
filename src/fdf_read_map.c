@@ -6,7 +6,7 @@
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 02:00:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/09 02:00:00 by vshkykav         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:43:13 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	fdf_get_map_height(char **argv)
 	if (fd == -1)
 	{
 		ft_putstr("can't read file\n");
-		exit (0);
+		exit(0);
 	}
 	while (get_next_line(fd, &line) > 0)
 	{
@@ -43,7 +43,7 @@ static int	fdf_save_map(char **argv, t_map *map_info)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		exit (1);
+		exit(1);
 	i = 0;
 	while (get_next_line(fd, &line) > 0)
 	{

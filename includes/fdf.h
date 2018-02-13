@@ -6,7 +6,7 @@
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:40:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/07 15:40:00 by vshkykav         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:42:46 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct	s_all
 {
 	t_map		*map;
 	t_mlx		*mlx;
-	int 		show_control;
+	int			show_control;
 }				t_all;
 
 void			draw_straight_line(t_mlx *mlx, t_point p1, t_point p2,

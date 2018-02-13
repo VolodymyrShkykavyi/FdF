@@ -6,7 +6,7 @@
 /*   By: vshkykav <vshkykav@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:05:00 by vshkykav          #+#    #+#             */
-/*   Updated: 2018/02/08 20:05:00 by vshkykav         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:45:41 by vshkykav         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	hook_rotate(int key, t_all *info)
 	}
 	else if (key == 15)
 	{
-		info->map->move_x = 0;
-		info->map->move_y = 0;
+		hook_rotate(8, info);
 		info->map->rot_z = 0;
 		info->map->rot_x = 0;
 		info->map->rot_y = 0;
