@@ -26,7 +26,7 @@ void	fdf_init_lineparams(t_line *line, t_point *p1, t_point *p2)
 
 void	fdf_init_gradientparams(t_gradient *grad, t_point *p1, t_point *p2)
 {
-	int 	len;
+	int		len;
 
 	grad->r = rgb_get_rvalue(p1->color);
 	grad->g = rgb_get_gvalue(p1->color);
@@ -37,9 +37,9 @@ void	fdf_init_gradientparams(t_gradient *grad, t_point *p1, t_point *p2)
 	grad->db = (rgb_get_bvalue(p2->color) - grad->b) / (float)len;
 }
 
-int 	fdf_getnext_color_gradient(t_gradient *grad)
+int		fdf_getnext_color_gradient(t_gradient *grad)
 {
-	int 	color;
+	int		color;
 
 	grad->r += grad->dr;
 	grad->g += grad->dg;

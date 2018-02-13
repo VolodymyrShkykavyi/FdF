@@ -15,7 +15,7 @@
 static void	fdf_zoom_map(t_map *map_info)
 {
 	int		i;
-	int 	j;
+	int		j;
 
 	i = -1;
 	while (++i < map_info->height)
@@ -23,9 +23,12 @@ static void	fdf_zoom_map(t_map *map_info)
 		j = -1;
 		while (++j < map_info->width)
 		{
-			map_info->result[i][j].x = map_info->matrix[i][j].x * map_info->line_len;
-			map_info->result[i][j].y = map_info->matrix[i][j].y * map_info->line_len;
-			map_info->result[i][j].z = map_info->matrix[i][j].z * map_info->line_len;
+			map_info->result[i][j].x = map_info->matrix[i][j].x *
+					map_info->line_len;
+			map_info->result[i][j].y = map_info->matrix[i][j].y *
+					map_info->line_len;
+			map_info->result[i][j].z = map_info->matrix[i][j].z *
+					map_info->line_len;
 			map_info->result[i][j].color = map_info->matrix[i][j].color;
 		}
 	}
@@ -48,8 +51,8 @@ static void	fdf_rotate_map_set_tmpcord(t_point *p, int *x, int *y, int *z)
 static void	fdf_rotate_map(t_map *map)
 {
 	int		x;
-	int 	y;
-	int 	z;
+	int		y;
+	int		z;
 	int		i;
 	int		j;
 
@@ -74,8 +77,8 @@ static void	fdf_rotate_map(t_map *map)
 
 void		fdf_move_map(t_map *map_info)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < map_info->height)

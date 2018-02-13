@@ -26,5 +26,3 @@ void	fdf_rot_z_change(int degree, t_map *map_info)
 {
 	map_info->rot_z += degree * M_PI / 180;
 }
-
-//void	fdf_rotate_x()

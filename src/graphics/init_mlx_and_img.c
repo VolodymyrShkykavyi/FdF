@@ -17,7 +17,7 @@ t_mlx	*init_mlx_and_img(int width, int height, char *title)
 {
 	t_mlx	*mlx_info;
 
-	mlx_info =  (t_mlx *)malloc(sizeof(t_mlx));
+	mlx_info = (t_mlx *)malloc(sizeof(t_mlx));
 	mlx_info->mlx_ptr = mlx_init();
 	mlx_info->win_ptr = mlx_new_window(mlx_info->mlx_ptr, width, height, title);
 	mlx_info->height = height;

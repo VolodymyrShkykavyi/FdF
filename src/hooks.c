@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdlib.h>
 
 /*
 ** key code:
@@ -37,7 +36,7 @@ void	fdf_set_move_info(int key, t_all *info)
 		info->map->move_x += 5;
 }
 
-void 	hook_rotate(int key, t_all *info)
+void	hook_rotate(int key, t_all *info)
 {
 	if (key == 13)
 		fdf_rot_x_change(-5, info->map);
@@ -55,18 +54,31 @@ void 	hook_rotate(int key, t_all *info)
 	{
 		info->map->move_x = 0;
 		info->map->move_y = 0;
-		info->map->rot_z = -0.261799;
-		info->map->rot_x = -6.370451;
+	}
+	else if (key == 15)
+	{
+		info->map->move_x = 0;
+		info->map->move_y = 0;
+		info->map->rot_z = 0;
+		info->map->rot_x = 0;
 		info->map->rot_y = 0;
+		info->map->line_len = info->map->start_line_len;
 	}
 }
 
-int 	pressed_key(int key, t_all *info)
+int		hook_close(void)
+{
+	exit(0);
+}
+
+int		pressed_key(int key, t_all *info)
 {
 	if (key == 53)
 		exit(0);
-	if (key >= 123 && key <= 126 )
+	if (key >= 123 && key <= 126)
 		fdf_set_move_info(key, info);
+	if (key == 48)
+		info->show_control = (info->show_control) ? 0 : 1;
 	else if (key == 69)
 	{
 		if (info->mlx->height / 6 > info->map->line_len)
@@ -74,35 +86,18 @@ int 	pressed_key(int key, t_all *info)
 	}
 	else if (key == 78)
 	{
-		if (info->map->line_len > 3)info->map->line_len -= 3;
+		if (info->map->line_len > 3)
+			info->map->line_len -= 3;
 	}
-	else if (key == -1) //1, 2, 3 -change color scheme
-	{
-		info->map->bot_color = 0xFF0000;
-		info->map->top_color = 0x00FF00;
-		fdf_map_point_colors(info->map, 1);
-	}
+	else if ((key >= 18 && key <= 21) || key == 23)
+		change_color_scheme(key, info);
+	else if (key >= 83 && key <= 86)
+		hook_projection(key, info);
 	else
 		hook_rotate(key, info);
-/*	if (key == 49)
-		printf("rot_z %f, rot x %f, rot y %f\n", info->map->rot_z, info->map->rot_x, info->map->rot_y);
-*/
 	fdf_get_result_map(info->map);
-	fdf_draw_map(info->map, info->mlx);
-	printf("key = %d\n", key);
+	fdf_draw_map(info->map, info->mlx, info->show_control);
 	return (0);
-
-}
-
-//int		mouse_click(int btn, int x, int y)
-//{
-//	printf("mouse: btn: %i x = %i y = %i\n", btn, x, y);
-//	return (0);
-//}
-
-int 	close_hook()
-{
-	exit(0);
 }
 
 void	fdf_run_hooks(t_mlx *mlx, t_map *map)
@@ -111,8 +106,7 @@ void	fdf_run_hooks(t_mlx *mlx, t_map *map)
 
 	info.map = map;
 	info.mlx = mlx;
-
-//	mlx_mouse_hook(mlx->win_ptr, &mouse_click, NULL);
-	mlx_hook(mlx->win_ptr, 17, 0, &close_hook, NULL);
+	info.show_control = 0;
+	mlx_hook(mlx->win_ptr, 17, 0, &hook_close, NULL);
 	mlx_hook(mlx->win_ptr, 2, 3, &pressed_key, &info);
 }

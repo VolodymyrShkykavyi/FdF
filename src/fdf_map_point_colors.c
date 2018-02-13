@@ -17,10 +17,10 @@
 ** if reset_flag set to 1 - reset all saved color to new
 */
 
-void	fdf_map_point_colors(t_map *map_info, int	reset_flag)
+void	fdf_map_point_colors(t_map *map_info, int reset_flag)
 {
-	int 		i;
-	int 		j;
+	int			i;
+	int			j;
 	t_gradient	grad;
 	t_point		p1;
 	t_point		p2;
@@ -39,8 +39,8 @@ void	fdf_map_point_colors(t_map *map_info, int	reset_flag)
 		while (++j < map_info->width)
 			if (map_info->matrix[i][j].color == -1 || reset_flag == 1)
 				map_info->matrix[i][j].color = rgb_get_color(
-						grad.r + grad.dr * (map_info->matrix[i][j].z - min_z),
-						grad.g + grad.dg * (map_info->matrix[i][j].z - min_z),
-						grad.b + grad.db * (map_info->matrix[i][j].z - min_z));
+						grad.r + grad.dr * (map_info->matrix[i][j].z - p1.y),
+						grad.g + grad.dg * (map_info->matrix[i][j].z - p1.y),
+						grad.b + grad.db * (map_info->matrix[i][j].z - p1.y));
 	}
 }

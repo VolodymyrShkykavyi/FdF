@@ -14,18 +14,20 @@ add_executable(fdf
         src/fdf_rotate.c
         src/graphics
         src/hooks.c
-        src/swap_points.c
+      #  src/swap_points.c
         src/fdf_get_result_map.c
         src/fdf_rotate.c
+        src/fdf_map_point_colors.c
+        src/hooks2.c
 
         src/graphics/additional_functions.c
-        src/graphics/draw_line.c
+       # src/graphics/draw_line.c
         src/graphics/init_img_struct.c
         src/graphics/put_pixel_to_img.c
         src/graphics/rgb_get_color.c
         src/graphics/rgb_get_rvalue.c
         src/graphics/draw_gradient_line.c
-        src/graphics/get_fraction.c
+       # src/graphics/get_fraction.c
         src/graphics/init_mlx_and_img.c
         src/graphics/rgb_get_bvalue.c
         src/graphics/rgb_get_gvalue.c

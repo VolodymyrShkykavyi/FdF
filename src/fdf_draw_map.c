@@ -12,10 +12,27 @@
 
 #include "../includes/fdf.h"
 
-void	fdf_draw_map(t_map *map_info, t_mlx *mlx)
+void	fdf_print_controls(t_map *map_info, t_mlx *mlx)
 {
-	int 	i;
-	int 	j;
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 50, 650,
+				0x889191, "rotate:");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 50, 670,
+				0x889191, "  OX: w, s   OY: a, d  OZ: q, e");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 50, 690, 0x889191, "move:");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 50, 710, 0x889191,
+				"  arrow keys");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 550, 650,
+				0x889191, "projection:");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 550, 670,
+				0x889191, "  parallel: NUM1, NUM2, NUM3");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 550, 690,
+				0x889191, "  isometric: NUM4");
+}
+
+void	fdf_draw_map(t_map *map_info, t_mlx *mlx, int controls)
+{
+	int		i;
+	int		j;
 
 	i = -1;
 	ft_bzero(mlx->img.img_data, (size_t)mlx->height * mlx->width * 4);
@@ -35,5 +52,6 @@ void	fdf_draw_map(t_map *map_info, t_mlx *mlx)
 		}
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
-	printf("draw map end\n");
+	if (controls)
+		fdf_print_controls(map_info, mlx);
 }

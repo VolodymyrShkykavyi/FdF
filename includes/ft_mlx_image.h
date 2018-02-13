@@ -43,16 +43,16 @@ typedef struct		s_img
 ** 					is defined above.
 */
 
-typedef struct	s_mlx
+typedef struct		s_mlx
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	int			height;
-	int			width;
-	t_img		img;
-}				t_mlx;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				height;
+	int				width;
+	t_img			img;
+}					t_mlx;
 
-void			init_img_struct(t_mlx *mlx, int width,  int height);
-void			put_pixel_to_img(t_img *img, int x, int y, int color);
-t_mlx			*init_mlx_and_img(int width, int height, char *title);
+void				init_img_struct(t_mlx *mlx, int width, int height);
+void				put_pixel_to_img(t_img *img, int x, int y, int color);
+t_mlx				*init_mlx_and_img(int width, int height, char *title);
 #endif
